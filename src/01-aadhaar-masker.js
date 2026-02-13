@@ -28,5 +28,15 @@
  *   // => "INVALID"
  */
 export function maskAadhaar(aadhaarNumber) {
-  // Your code here
+  if(typeof aadhaarNumber != 'string' || aadhaarNumber.length != 12){
+    return "INVALID";
+  }
+  if(isNaN(aadhaarNumber)){
+    return "INVALID";
+  }
+
+  let encryptAdahar = "XXXX-XXXX-";
+  encryptAdahar += aadhaarNumber.slice(8,12);
+
+  return encryptAdahar;
 }
