@@ -31,12 +31,14 @@ export function maskAadhaar(aadhaarNumber) {
   if(typeof aadhaarNumber != 'string' || aadhaarNumber.length != 12){
     return "INVALID";
   }
-  if(isNaN(aadhaarNumber)){
+  if (!/^\d{12}$/.test(aadhaarNumber)) {
     return "INVALID";
   }
+  
+  let last4digit = aadhaarNumber.slice(-4);
+  return `XXXX-XXXX-${last4digit}`
 
-  let encryptAdahar = "XXXX-XXXX-";
-  encryptAdahar += aadhaarNumber.slice(8,12);
-
-  return encryptAdahar;
+  // let encryptAdahar = "XXXX-XXXX-";
+  // encryptAdahar += aadhaarNumber.slice(8,12);
+  // return encryptAdahar;
 }
